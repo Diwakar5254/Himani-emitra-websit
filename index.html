@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Himani E-Mitra</title>
 
+    <!-- 🌟 Favicon Added Here -->
+    <link rel="icon" type="image/jpeg" href="emitra-logo.jpeg">
+
     <style>
         html {
-            scroll-behavior: smooth; /* Smooth scrolling */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -28,12 +31,6 @@
             z-index: 100;
         }
 
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-            color: #0056ff;
-        }
-
         nav a {
             text-decoration: none;
             margin-left: 20px;
@@ -43,6 +40,18 @@
 
         nav a:hover {
             color: #0056ff;
+        }
+
+        .himani-logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: green;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px green, 0 0 10px green, 0 0 15px green; }
+            100% { text-shadow: 0 0 20px green, 0 0 30px green, 0 0 40px green; }
         }
 
         .hero {
@@ -79,14 +88,6 @@
             margin: 8px 0;
         }
 
-        footer {
-            background: #222;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            font-size: 18px;
-        }
-
         #contact {
             padding: 40px;
             background: #eef2ff;
@@ -95,36 +96,50 @@
         #contact h2 {
             font-size: 30px;
         }
+
+        footer {
+            background: #222;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .emitra-logo {
+            width: 140px;
+            margin-bottom: 12px;
+            animation: colorCycle 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes colorCycle {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(90deg); }
+        }
+
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">🌐 HIMANI E-MITRA</div>
     <nav>
         <a href="#home">Home</a>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
     </nav>
+    <div class="himani-logo">Himani</div>
 </header>
 
-<!-- HOME SECTION -->
 <section class="hero" id="home">
     <div class="hero-text">
         <h1>Welcome to Himani E-Mitra</h1>
         <p>Providing essential services at your convenience.</p>
-
         <p><b>Open:</b> 8:00 AM – 8:00 PM (Everyday)</p>
         <p><b>Email:</b> sharmahome29@gmail.com</p>
     </div>
-
-    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png" width="250">
 </section>
 
-<!-- SERVICES SECTION -->
 <section class="services-section" id="services">
     <h2>Our Services</h2>
-
     <ul class="service-list">
         <li>✔ Bill Payments (Electricity, Water, Mobile)</li>
         <li>✔ Aadhaar Services</li>
@@ -132,4 +147,20 @@
         <li>✔ Ticket Booking (Bus / Train)</li>
         <li>✔ Government Forms</li>
         <li>✔ Banking / Money Transfer</li>
-        <li>✔ Photocopy / Print
+        <li>✔ Photocopy / Print</li>
+        <li>✔ Cibil</li>
+    </ul>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: sharmahome29@gmail.com</p>
+</section>
+
+<footer>
+    <img src="emitra-logo.jpeg" class="emitra-logo" alt="E-Mitra Logo">
+    © 2025 Himani E-Mitra. All Rights Reserved.
+</footer>
+
+</body>
+</html>
