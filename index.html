@@ -5,14 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Himani E-Mitra</title>
 
-    <!-- 🌟 Favicon Added Here -->
-    <link rel="icon" type="image/jpeg" href="emitra-logo.jpeg">
-
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -32,135 +25,175 @@
         }
 
         nav a {
-            text-decoration: none;
             margin-left: 20px;
             font-size: 18px;
+            cursor: pointer;
             color: #333;
+            text-decoration: none;
         }
 
-        nav a:hover {
-            color: #0056ff;
-        }
+        nav a:hover { color: #0056ff; }
 
-        .himani-logo {
-            font-size: 25px;
-            font-weight: bold;
-            color: green;
-            animation: glow 1.5s infinite alternate;
-        }
-
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px green, 0 0 10px green, 0 0 15px green; }
-            100% { text-shadow: 0 0 20px green, 0 0 30px green, 0 0 40px green; }
-        }
-
-        .hero {
+        section {
             padding: 50px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .hero-text {
-            max-width: 50%;
-        }
-
-        .hero-text h1 {
-            font-size: 40px;
-        }
-
-        .hero-text p {
-            font-size: 20px;
-        }
-
-        .services-section {
-            padding: 60px 40px;
-            background: #fff;
-        }
-
-        .services-section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .service-list li {
-            font-size: 20px;
-            margin: 8px 0;
-        }
-
-        #contact {
-            padding: 40px;
-            background: #eef2ff;
-        }
-
-        #contact h2 {
-            font-size: 30px;
         }
 
         footer {
             background: #222;
+            color: white;
             padding: 20px;
             text-align: center;
+        }
+
+        /* Payment list & service pages */
+        .hidden { display: none; }
+
+        .service-btn {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            padding: 15px;
+            margin: 10px 0;
+            background: #0056ff;
             color: white;
-            font-size: 18px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
         }
 
-        .emitra-logo {
-            width: 140px;
-            margin-bottom: 12px;
-            animation: colorCycle 3s infinite alternate ease-in-out;
+        .service-btn:hover { background: #003bbb; }
+
+        .back-btn {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
         }
 
-        @keyframes colorCycle {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(90deg); }
-        }
-
+        .back-btn:hover { background: #444; }
     </style>
 </head>
 <body>
 
 <header>
     <nav>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('services')">Services</a>
+        <a onclick="openPayment()">Payment</a>
+        <a onclick="showPage('contact')">Contact</a>
     </nav>
-    <div class="himani-logo">Himani</div>
+    <div style="font-size: 25px; font-weight: bold; color: green;">Himani</div>
 </header>
 
-<section class="hero" id="home">
-    <div class="hero-text">
-        <h1>Welcome to Himani E-Mitra</h1>
-        <p>Providing essential services at your convenience.</p>
-        <p><b>Open:</b> 8:00 AM – 8:00 PM (Everyday)</p>
-        <p><b>Email:</b> sharmahome29@gmail.com</p>
-    </div>
+<!-- HOME -->
+<section id="home">
+    <h1>Welcome to Himani E-Mitra</h1>
+    <p>Providing essential services at your convenience.</p>
 </section>
 
-<section class="services-section" id="services">
+<!-- MAIN SERVICES SECTION -->
+<section id="services">
     <h2>Our Services</h2>
-    <ul class="service-list">
-        <li>✔ Bill Payments (Electricity, Water, Mobile)</li>
-        <li>✔ Aadhaar Services</li>
-        <li>✔ PAN Card Services</li>
-        <li>✔ Ticket Booking (Bus / Train)</li>
-        <li>✔ Government Forms</li>
-        <li>✔ Banking / Money Transfer</li>
-        <li>✔ Photocopy / Print</li>
-        <li>✔ Cibil</li>
-    </ul>
+    <p>✔ Bill Payments<br>
+       ✔ Aadhaar Services<br>
+       ✔ PAN Card Services<br>
+       ✔ Ticket Booking<br>
+       ✔ Government Forms<br>
+       ✔ Banking / Money Transfer<br>
+       ✔ Photocopy / Print<br>
+       ✔ CIBIL</p>
 </section>
 
-<section id="contact">
+<!-- PAYMENT SERVICE LIST -->
+<section id="paymentList" class="hidden">
+    <h1>Select a Service</h1>
+
+    <button class="service-btn" onclick="openPlans('Bill Payments')">✔ Bill Payments</button>
+    <button class="service-btn" onclick="openPlans('Aadhaar Services')">✔ Aadhaar Services</button>
+    <button class="service-btn" onclick="openPlans('PAN Card Services')">✔ PAN Card</button>
+    <button class="service-btn" onclick="openPlans('Ticket Booking')">✔ Ticket Booking</button>
+    <button class="service-btn" onclick="openPlans('Government Forms')">✔ Government Forms</button>
+    <button class="service-btn" onclick="openPlans('Banking / Money Transfer')">✔ Banking / Money Transfer</button>
+    <button class="service-btn" onclick="openPlans('Photocopy / Print')">✔ Photocopy / Print</button>
+    <button class="service-btn" onclick="openPlans('CIBIL')">✔ CIBIL</button>
+
+    <button class="back-btn" onclick="showPage('home')">⬅ Back</button>
+</section>
+
+<!-- SERVICE DETAILS PAGE -->
+<section id="servicePlans" class="hidden">
+    <h1 id="serviceTitle">Service</h1>
+    <div id="planDetails" style="font-size:20px; margin-top:20px;"></div>
+
+    <button class="back-btn" onclick="backToList()">⬅ Back</button>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="hidden">
     <h2>Contact Us</h2>
     <p>Email: sharmahome29@gmail.com</p>
 </section>
 
-<footer>
-    <img src="emitra-logo.jpeg" class="emitra-logo" alt="E-Mitra Logo">
+<footer id="mainFooter">
     © 2025 Himani E-Mitra. All Rights Reserved.
 </footer>
+
+<script>
+    function hideAll() {
+        document.getElementById("home").classList.add("hidden");
+        document.getElementById("services").classList.add("hidden");
+        document.getElementById("paymentList").classList.add("hidden");
+        document.getElementById("servicePlans").classList.add("hidden");
+        document.getElementById("contact").classList.add("hidden");
+
+        document.getElementById("mainFooter").classList.add("hidden");
+    }
+
+    function showPage(page) {
+        hideAll();
+        document.getElementById(page).classList.remove("hidden");
+        document.getElementById("mainFooter").classList.remove("hidden");
+    }
+
+    function openPayment() {
+        hideAll();
+        document.getElementById("paymentList").classList.remove("hidden");
+    }
+
+    function openPlans(service) {
+        hideAll();
+        document.getElementById("servicePlans").classList.remove("hidden");
+        document.getElementById("serviceTitle").innerText = service;
+
+        let details = "";
+
+        if (service === "CIBIL") {
+            details = `
+                ✔ Basic CIBIL Report – ₹150<br>
+                ✔ Full Score + History – ₹250<br>
+                ✔ Detailed Report – ₹400
+            `;
+        } else if (service === "Bill Payments") {
+            details = `
+                ✔ Electricity – ₹20 Fee<br>
+                ✔ Water – ₹10 Fee<br>
+                ✔ Mobile Recharge – Free
+            `;
+        } else {
+            details = "Plans will be added soon.";
+        }
+
+        document.getElementById("planDetails").innerHTML = details;
+    }
+
+    function backToList() {
+        hideAll();
+        document.getElementById("paymentList").classList.remove("hidden");
+    }
+</script>
 
 </body>
 </html>
