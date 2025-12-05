@@ -10,6 +10,25 @@
             margin: 0;
             font-family: Arial, sans-serif;
             background: #f6f8ff;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Smooth fade animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section fade animation */
+        .fade {
+            opacity: 0;
+            animation: fadeSection 0.6s ease forwards;
+        }
+
+        @keyframes fadeSection {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         header {
@@ -89,13 +108,13 @@
 </header>
 
 <!-- HOME -->
-<section id="home">
+<section id="home" class="fade">
     <h1>Welcome to Himani E-Mitra</h1>
     <p>Providing essential services at your convenience.</p>
 </section>
 
 <!-- MAIN SERVICES SECTION -->
-<section id="services">
+<section id="services" class="hidden fade">
     <h2>Our Services</h2>
     <p>✔ Bill Payments<br>
        ✔ Aadhaar Services<br>
@@ -108,7 +127,7 @@
 </section>
 
 <!-- PAYMENT SERVICE LIST -->
-<section id="paymentList" class="hidden">
+<section id="paymentList" class="hidden fade">
     <h1>Select a Service</h1>
 
     <button class="service-btn" onclick="openPlans('Bill Payments')">✔ Bill Payments</button>
@@ -124,7 +143,7 @@
 </section>
 
 <!-- SERVICE DETAILS PAGE -->
-<section id="servicePlans" class="hidden">
+<section id="servicePlans" class="hidden fade">
     <h1 id="serviceTitle">Service</h1>
     <div id="planDetails" style="font-size:20px; margin-top:20px;"></div>
 
@@ -132,40 +151,47 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="hidden">
+<section id="contact" class="hidden fade">
     <h2>Contact Us</h2>
     <p>Email: sharmahome29@gmail.com</p>
 </section>
 
-<footer id="mainFooter">
+<footer id="mainFooter" class="fade">
     © 2025 Himani E-Mitra. All Rights Reserved.
 </footer>
 
 <script>
     function hideAll() {
-        document.getElementById("home").classList.add("hidden");
-        document.getElementById("services").classList.add("hidden");
-        document.getElementById("paymentList").classList.add("hidden");
-        document.getElementById("servicePlans").classList.add("hidden");
-        document.getElementById("contact").classList.add("hidden");
-
-        document.getElementById("mainFooter").classList.add("hidden");
+        const allPages = ["home", "services", "paymentList", "servicePlans", "contact"];
+        allPages.forEach(id => {
+            let el = document.getElementById(id);
+            el.classList.add("hidden");
+        });
     }
 
     function showPage(page) {
         hideAll();
-        document.getElementById(page).classList.remove("hidden");
-        document.getElementById("mainFooter").classList.remove("hidden");
+        let el = document.getElementById(page);
+        el.classList.remove("hidden");
+
+        el.classList.remove("fade");
+        void el.offsetWidth; 
+        el.classList.add("fade");
     }
 
     function openPayment() {
-        hideAll();
-        document.getElementById("paymentList").classList.remove("hidden");
+        showPage("paymentList");
     }
 
     function openPlans(service) {
         hideAll();
-        document.getElementById("servicePlans").classList.remove("hidden");
+        const page = document.getElementById("servicePlans");
+        page.classList.remove("hidden");
+
+        page.classList.remove("fade");
+        void page.offsetWidth;
+        page.classList.add("fade");
+
         document.getElementById("serviceTitle").innerText = service;
 
         let details = "";
@@ -190,8 +216,7 @@
     }
 
     function backToList() {
-        hideAll();
-        document.getElementById("paymentList").classList.remove("hidden");
+        showPage("paymentList");
     }
 </script>
 
